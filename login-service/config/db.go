@@ -3,12 +3,14 @@ package config
 import (
 	"database/sql"
 	"log"
+
+	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
 
 func InitDB() {
-	connstr := "postgres://admin:admin@localhost:5433/login-service?sslmode=disable"
+	connstr := "postgres://postgres:admin@localhost:5433/login-service?sslmode=disable"
 	var err error
 	DB, err = sql.Open("postgres", connstr)
 	if err != nil {
