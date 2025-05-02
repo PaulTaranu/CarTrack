@@ -1,0 +1,1 @@
+This microservice will manage the User aspect of the application

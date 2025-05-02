@@ -1,0 +1,1 @@
+This microservice will manage the Notification aspect of the application
