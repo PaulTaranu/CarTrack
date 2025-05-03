@@ -1,26 +1,22 @@
 package config
 
 import (
-	"database/sql"
 	"log"
 
-	_ "github.com/lib/pq"
+	"gorm.io/driver/postgres"
+
+	"gorm.io/gorm"
 )
 
-var DB *sql.DB
+var DB *gorm.DB
 
 func InitDB() {
-	connstr := "postgres://postgres:admin@localhost:5433/login-service?sslmode=disable"
+	dsn := "host=localhost user=postgres password=admin dbname=login-service port=5433"
 	var err error
-	DB, err = sql.Open("postgres", connstr)
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("connection error", err)
 	}
-
-	if err := DB.Ping(); err != nil {
-		log.Fatal("Database unreachable", err)
-	}
-
 	log.Println("Connection established")
 
 }
