@@ -1,12 +1,13 @@
 package auth
 
 import (
+	"os"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var jwtSecret = []byte("token")
+var jwtSecret = []byte(os.Getenv("HASH_KEY"))
 
 type Claims struct {
 	UserID string `json:"user_id"`
