@@ -11,11 +11,15 @@ type User struct {
 	Password string
 }
 
-func FindUsersByEmail(email string) (*User, error) {
+func FindUserByEmail(email string) (*User, error) {
 	var user User
 	err := config.DB.Where("email = ?", email).First(&user).Error
 	if err != nil {
 		log.Error("User with email {} not found", email)
 	}
 	return &user, err
+}
+
+func CreateUser(user *User) error {
+	return config.DB.Create(user).Error
 }
