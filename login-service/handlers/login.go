@@ -23,7 +23,7 @@ func LoginHandler(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, echo.Map{"error": "Invalid Request"})
 	}
 
-	user, err := models.FindUsersByEmail(req.Email)
+	user, err := models.FindUserByEmail(req.Email)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Internal error"})
 	}
