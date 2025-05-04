@@ -9,5 +9,5 @@ func main() {
 	config.InitDB()
 
 	e := router.InitRoutes()
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Start(":8080")
 }
